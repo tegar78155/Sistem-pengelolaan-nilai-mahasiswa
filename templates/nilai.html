@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Kelola Nilai Mahasiswa</h2>
+
+<!-- Pilih Mahasiswa -->
+<form method="GET" action="{{ url_for('kelola_nilai') }}">
+    <label>Pilih Mahasiswa:</label>
+    <select name="id_mahasiswa" onchange="this.form.submit()">
+        <option value="">-- Pilih --</option>
+        {% for mhs in mahasiswa %}
+            <option value="{{ mhs.id }}" {% if selected_id == mhs.id %}selected{% endif %}>{{ mhs.nama }}</option>
+        {% endfor %}
+    </select>
+</form>
+
+{% if selected_mhs %}
+    <h3>Nilai untuk: {{ selected_mhs.nama }} ({{ selected_mhs.nim }})</h3>
+
+    <!-- Form Tambah Nilai -->
+    <form method="POST" action="{{ url_for('tambah_nilai', id_mahasiswa=selected_mhs.id) }}">
+        <input type="text" name="matakuliah" placeholder="Nama Mata Kuliah" required>
+        <input type="number" name="nilai" placeholder="Nilai" required min="0" max="100">
+        <button type="submit">Tambah</button>
+    </form>
+
+    <!-- Tabel Nilai -->
+    <table border="1" cellpadding="10" cellspacing="0">
+        <tr>
+            <th>No</th>
+            <th>Mata Kuliah</th>
+            <th>Nilai</th>
+            <th>Aksi</th>
+        </tr>
+        {% for item in nilai %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ item.matakuliah }}</td>
+            <td>{{ item.nilai }}</td>
+            <td>
+                <a href="{{ url_for('hapus_nilai', id=item.id) }}" onclick="return confirm('Hapus nilai ini?')">Hapus</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <p><strong>Rata-rata Nilai:</strong> {{ rata_nilai }}</p>
+{% endif %}
+{% endblock %}

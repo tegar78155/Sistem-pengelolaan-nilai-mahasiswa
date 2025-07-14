@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>SI Nilai Mahasiswa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+
+        <!-- Tombol tema -->
+        <div class="theme-toggle">
+            <button onclick="toggleTheme()">Hitam/Putih</button>
+        </div>
+
+        <!-- Isi halaman -->
+        {% block content %}{% endblock %}
+
+        <!-- Tombol navigasi -->
+        <div class="nav-footer" style="margin-top: 2rem;">
+            {% if request.path == '/' %}
+                <a href="{{ url_for('dashboard') }}" class="btn-nav">Continue</a>
+            {% elif request.path == '/dashboard' %}
+                <a href="{{ url_for('logout') }}" class="btn-nav">Back</a>
+                <a href="{{ url_for('kelola_mahasiswa') }}" class="btn-nav">Continue</a>
+            {% elif request.path == '/mahasiswa' %}
+                <a href="{{ url_for('dashboard') }}" class="btn-nav">Back</a>
+                <a href="{{ url_for('kelola_nilai') }}" class="btn-nav">Continue</a>
+            {% elif request.path == '/nilai' %}
+                <a href="{{ url_for('kelola_mahasiswa') }}" class="btn-nav">Back</a>
+                <a href="{{ url_for('logout') }}" class="btn-nav">Continue</a>
+            {% elif request.path == '/logout' %}
+                <a href="{{ url_for('login') }}" class="btn-nav">Login Again</a>
+            {% endif %}
+        </div>
+
+    </div>
+
+    <!-- Script tema -->
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle('dark');
+            localStorage.setItem("theme", body.classList.contains('dark') ? "dark" : "light");
+        }
+
+        window.onload = function() {
+            const savedTheme = localStorage.getItem("theme");
+            if (savedTheme === "dark") {
+                document.body.classList.add("dark");
+            }
+        }
+    </script>
+</body>
+</html>

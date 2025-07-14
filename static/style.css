@@ -1,0 +1,163 @@
+:root {
+    --bg-color: #f5f5f5;
+    --bg-gradient: linear-gradient(135deg, #e0f7fa, #ffffff);
+    --text-color: #222;
+    --card-bg: #ffffff;
+    --btn-bg: #3498db;
+    --btn-color: #fff;
+    --table-head: #3498db;
+    --table-head-text: #fff;
+    --input-bg: #fff;
+    --border-color: #ccc;
+}
+
+body.dark {
+    --bg-color: #1e1e1e;
+    --bg-gradient: linear-gradient(135deg, #1a1a1a, #2e2e2e);
+    --text-color: #f5f5f5;
+    --card-bg: #2c2c2c;
+    --btn-bg: #2b29b9;
+    --btn-color: #fff;
+    --table-head: #444;
+    --table-head-text: #fff;
+    --input-bg: #333;
+    --border-color: #555;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--bg-gradient);
+    color: var(--text-color);
+    margin: 0;
+    padding: 2rem;
+    transition: background 0.4s ease;
+}
+
+.container {
+    max-width: 960px;
+    margin: auto;
+}
+
+h2, h3 {
+    margin-top: 0;
+}
+
+form {
+    margin-bottom: 1rem;
+}
+
+input, select, button {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+}
+
+button {
+    background-color: var(--btn-bg);
+    color: var(--btn-color);
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+table th {
+    background-color: var(--table-head);
+    color: var(--table-head-text);
+}
+
+table th, table td {
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    text-align: left;
+}
+
+.card-container {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.card {
+    flex: 1;
+    padding: 1rem;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.nav-buttons a {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 10px 15px;
+    text-decoration: none;
+    background-color: var(--btn-bg);
+    color: var(--btn-color);
+    border-radius: 5px;
+}
+
+/* Tombol Back/Continue */
+.btn-nav {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: var(--btn-bg);
+    color: var(--btn-color);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+.btn-nav:hover {
+    opacity: 0.85;
+}
+
+.alert {
+    color: red;
+    margin: 1rem 0;
+}
+
+/* Tema toggle */
+.theme-toggle {
+    float: right;
+    margin-bottom: 10px;
+}
+
+/* Login halaman tengah */
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--bg-gradient);
+}
+
+.login-container {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 300px;
+    text-align: center;
+}
+
+.login-container input {
+    width: 100%;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.login-container button {
+    width: 100%;
+}

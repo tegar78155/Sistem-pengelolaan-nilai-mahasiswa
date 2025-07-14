@@ -1,0 +1,24 @@
+{
+    "mahasiswa": [
+        {
+            "id": 1,
+            "nama": "Tegar",
+            "nim": "301240030"
+        }
+    ],
+    "nilai": [
+        {
+            "id": 2,
+            "id_mahasiswa": 1,
+            "matakuliah": "bahasa spanish",
+            "nilai": 100
+        }
+    ],
+    "ekskul": [
+        {
+            "id": 1,
+            "nama": "badminton",
+            "pembina": "budi"
+        }
+    ]
+}

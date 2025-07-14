@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard">
+    <h2>Dashboard</h2>
+    <div class="card-container">
+        <div class="card">
+            <h3>Total Mahasiswa</h3>
+            <p>{{ total_mahasiswa }}</p>
+        </div>
+        <div class="card">
+            <h3>Total Mata Kuliah</h3>
+            <p>{{ total_matkul }}</p>
+        </div>
+        <div class="card">
+            <h3>Rata-rata Nilai</h3>
+            <p>{{ rata_nilai }}</p>
+        </div>
+    </div>
+
+    <!-- Tombol navigasi -->
+    <div class="nav-buttons">
+        <a href="{{ url_for('kelola_mahasiswa') }}" class="btn-nav">📋 Kelola Mahasiswa</a>
+        <a href="{{ url_for('kelola_nilai') }}" class="btn-nav">📑 Kelola Nilai</a>
+        <a href="{{ url_for('ekstrakurikuler') }}" class="btn-nav">🎯 Ekstrakurikuler</a>
+        <a href="{{ url_for('logout') }}" class="btn-nav">🔒 Logout</a>
+    </div>
+</div>
+{% endblock %}

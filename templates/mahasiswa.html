@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Kelola Mahasiswa</h2>
+
+<!-- Form tambah mahasiswa -->
+<form action="{{ url_for('tambah_mahasiswa') }}" method="POST" class="form-inline">
+    <input type="text" name="nama" placeholder="Nama" required>
+    <input type="text" name="nim" placeholder="NIM" required>
+    <button type="submit">Tambah</button>
+</form>
+
+<!-- Tabel mahasiswa -->
+<table border="1" cellpadding="10" cellspacing="0">
+    <tr>
+        <th>No</th>
+        <th>Nama</th>
+        <th>NIM</th>
+        <th>Aksi</th>
+    </tr>
+    {% for mhs in mahasiswa %}
+    <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ mhs.nama }}</td>
+        <td>{{ mhs.nim }}</td>
+        <td>
+            <a href="{{ url_for('hapus_mahasiswa', id=mhs.id) }}" onclick="return confirm('Yakin ingin menghapus?')">Hapus</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

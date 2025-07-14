@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Ekstrakurikuler</h2>
+
+<!-- Form Tambah Ekskul -->
+<form action="{{ url_for('tambah_ekskul') }}" method="POST">
+    <input type="text" name="nama" placeholder="Nama Ekstrakurikuler" required>
+    <input type="text" name="pembina" placeholder="Nama Pembina" required>
+    <button type="submit">Tambah</button>
+</form>
+
+<!-- Tabel Daftar Ekskul -->
+<table>
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Nama Ekskul</th>
+            <th>Pembina</th>
+            <th>Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for e in ekskul %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ e.nama }}</td>
+            <td>{{ e.pembina }}</td>
+            <td>
+                <a href="{{ url_for('hapus_ekskul', id=e.id) }}" class="btn-nav" onclick="return confirm('Hapus kegiatan ini?')">Hapus</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Navigasi -->
+<div class="nav-buttons">
+    <a href="{{ url_for('dashboard') }}" class="btn-nav">⬅️ Kembali</a>
+</div>
+{% endblock %}
